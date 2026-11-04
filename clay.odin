@@ -5,6 +5,8 @@ import "core:strings"
 import rl "vendor:raylib"
 
 // TODO: hot reload with dynlib for faster iteration
+// TODO: runtime config
+// TODO: more customization (each border, font size, etc.)
 
 clay_init :: proc() {
     min_memory_size := cl.MinMemorySize()
@@ -182,7 +184,7 @@ clay_draw :: proc() -> cl.ClayArray(cl.RenderCommand) {
                 color = border_color,
                 width = cl.BorderOutside(border_width),
             },
-            // TODO: scroll
+            clip = {vertical = true, childOffset = cl.GetScrollOffset()},
         },
         ) {
             for &todo, i in todos {

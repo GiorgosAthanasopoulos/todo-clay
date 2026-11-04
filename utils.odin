@@ -20,7 +20,7 @@ hex_to_cl_color :: #force_inline proc "c" (hex : u32) -> cl.Color {
 
 datetime_to_string :: proc(dt : DateTime) -> string {
     sb := strings.builder_make()
-    defer strings.builder_destroy(&sb)
+    // defer strings.builder_destroy(&sb)
 
     strings.write_int(&sb, int(dt.d))
     strings.write_string(&sb, "/")
